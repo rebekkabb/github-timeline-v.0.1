@@ -1,16 +1,34 @@
 const mainText = document.querySelector('.mainText');
 const user = 'rebekkabb';
-
+const repositories = [];
+getAllData();
 
 //Fetch all data
-fetch('http://api.github.com/users/' + user + '/repos')
-    .then(response => response.json())
-    .then(data => extractRepos(data));
+async function getAllData() {
+    try {
+        let response = await fetch('http://api.github.com/users/' + user + '/repos');
+        let data = await response.json();
+        extractRepos(data);
+
+    } catch (err) {
+        console.log(err);
+    }
+}
 
 
-function extractRepos(data) {
-    data.forEach(extractData);
-    console.log(data);
+async function extractRepos(data) {
+    for (const repo of data) {
+        await extractData(repo)
+    }
+    // console.log(data);
+    sortRepositories();
+    displayHTML();
+
+
+}
+
+function sortRepositories(){
+    repositories.sort((a, b) => a.date.localeCompare(b.date));
 }
 
 async function extractData(repository) {
@@ -21,11 +39,20 @@ async function extractData(repository) {
         const description = getDescription(repository);
         const link = getLink(repository);
 
-        mainText.innerHTML += `<br> ${name} ${languages} ${date} ${description} <a href=${link} target="_blank"> Link </a> <hr>`;
-
+        // mainText.innerHTML += `<br> ${name} ${languages} ${date} ${description} <a href=${link} target="_blank"> Link </a> <hr>`;
+        let repo = {name: name, languages: languages, date: date, description: description, link: link};
+        repositories.push(repo);
     } catch (err) {
         console.log(err);
     }
+}
+
+function displayHTML() {
+    console.log(repositories);
+    repositories.forEach(function func(item) {
+        console.log("print");
+        mainText.innerHTML += `<br> ${item.name} ${item.date}<hr>`;
+    })
 }
 
 function getName(repository) {
