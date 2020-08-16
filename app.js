@@ -1,9 +1,8 @@
 const mainText = document.querySelector('.mainText');
-const user = 'rebekkabb';
+const user = 'kmteras';
 const repositories = [];
 getAllData();
 
-//Fetch all data
 async function getAllData() {
     try {
         let response = await fetch('http://api.github.com/users/' + user + '/repos');
@@ -17,14 +16,17 @@ async function getAllData() {
 
 
 async function extractRepos(data) {
+    let promises = [];
     for (const repo of data) {
-        await extractData(repo)
+        promises.push(extractData(repo));
     }
-    // console.log(data);
+
+    for (const promise of promises) {
+        repositories.push(await promise);
+    }
+
     sortRepositories();
     displayHTML();
-
-
 }
 
 function sortRepositories(){
@@ -41,14 +43,13 @@ async function extractData(repository) {
 
         // mainText.innerHTML += `<br> ${name} ${languages} ${date} ${description} <a href=${link} target="_blank"> Link </a> <hr>`;
         let repo = {name: name, languages: languages, date: date, description: description, link: link};
-        repositories.push(repo);
+        return repo;
     } catch (err) {
         console.log(err);
     }
 }
 
 function displayHTML() {
-    console.log(repositories);
     repositories.forEach(function func(item) {
         console.log("print");
         mainText.innerHTML += `<br> ${item.name} ${item.date}<hr>`;
@@ -79,7 +80,6 @@ async function getLanguages(repository) {
     try {
         let languages = await fetch('http://api.github.com/repos/' + user + '/' + repository.name + '/languages');
         let data = await languages.json();
-        // console.log(Object.keys(data));
         return Object.keys(data);
     } catch (err) {
         console.log(err);
