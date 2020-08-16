@@ -2,6 +2,15 @@ const mainContent = document.querySelector(".repositories");
 let user = 'rebekkabb';
 let repositories = [];
 
+const usernameInput = document.querySelector("#username-input");
+
+usernameInput.addEventListener("keyup", function (event) {
+    if(event.key === 'Enter'){
+        event.preventDefault();
+        document.querySelector("#input-button").click();
+    }
+});
+
 function saveUsernameAndSearch() {
     clearThePage();
     user = document.querySelector("#username-input").value;
