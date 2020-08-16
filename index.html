@@ -10,7 +10,14 @@
           rel="stylesheet">
 </head>
 <body>
-<p class="mainText"> Public repos: </p>
+<div class="content">
+    <label for="username-input"> Insert username </label>
+    <input type="text" id="username-input">
+    <button onclick="saveUsernameAndSearch()">Search</button>
+    <h1 class="mainText"> Public repos: </h1>
+    <div class="repositories"></div>
+</div>
+
 <script src="app.js"></script>
 </body>
 </html>

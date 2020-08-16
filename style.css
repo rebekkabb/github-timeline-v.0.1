@@ -3,4 +3,10 @@ body {
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat Alternates', sans-serif;
+
+}
+
+.content {
+    width: 80%;
+    margin: 5% auto;
 }

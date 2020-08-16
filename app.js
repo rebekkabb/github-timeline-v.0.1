@@ -1,10 +1,23 @@
-const mainText = document.querySelector('.mainText');
-const user = 'kmteras';
-const repositories = [];
-getAllData();
+const mainContent = document.querySelector(".repositories");
+let user = 'rebekkabb';
+let repositories = [];
+
+function saveUsernameAndSearch() {
+    clearThePage();
+    user = document.querySelector("#username-input").value;
+    console.log("inserted username" + user);
+    getAllData();
+}
+
+function clearThePage() {
+    mainContent.innerHTML = "";
+    repositories = [];
+}
+
 
 async function getAllData() {
     try {
+        console.log("beginning work now");
         let response = await fetch('http://api.github.com/users/' + user + '/repos');
         let data = await response.json();
         extractRepos(data);
@@ -29,7 +42,7 @@ async function extractRepos(data) {
     displayHTML();
 }
 
-function sortRepositories(){
+function sortRepositories() {
     repositories.sort((a, b) => a.date.localeCompare(b.date));
 }
 
@@ -40,10 +53,7 @@ async function extractData(repository) {
         const date = getDate(repository);
         const description = getDescription(repository);
         const link = getLink(repository);
-
-        // mainText.innerHTML += `<br> ${name} ${languages} ${date} ${description} <a href=${link} target="_blank"> Link </a> <hr>`;
-        let repo = {name: name, languages: languages, date: date, description: description, link: link};
-        return repo;
+        return {name: name, languages: languages, date: date, description: description, link: link};
     } catch (err) {
         console.log(err);
     }
@@ -52,7 +62,7 @@ async function extractData(repository) {
 function displayHTML() {
     repositories.forEach(function func(item) {
         console.log("print");
-        mainText.innerHTML += `<br> ${item.name} ${item.date}<hr>`;
+        mainContent.innerHTML += `<br> <p> ${item.name} ${item.date} <a href=${item.link} target="_blank"> Link to Github </a> </p><hr>`;
     })
 }
 
