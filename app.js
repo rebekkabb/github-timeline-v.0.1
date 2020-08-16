@@ -14,13 +14,21 @@ function clearThePage() {
     repositories = [];
 }
 
+function noUserFound() {
+    mainContent.innerHTML = "No such user found";
+}
+
 
 async function getAllData() {
     try {
         console.log("beginning work now");
         let response = await fetch('http://api.github.com/users/' + user + '/repos');
-        let data = await response.json();
-        extractRepos(data);
+        if(response.status === 404){
+            noUserFound();
+        } else{
+            let data = await response.json();
+            extractRepos(data);
+        }
 
     } catch (err) {
         console.log(err);
