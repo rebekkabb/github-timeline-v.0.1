@@ -5,7 +5,7 @@ let repositories = [];
 const usernameInput = document.querySelector("#username-input");
 
 usernameInput.addEventListener("keyup", function (event) {
-    if(event.key === 'Enter'){
+    if (event.key === 'Enter') {
         event.preventDefault();
         document.querySelector("#input-button").click();
     }
@@ -32,9 +32,9 @@ async function getAllData() {
     try {
         console.log("beginning work now");
         let response = await fetch('http://api.github.com/users/' + user + '/repos');
-        if(response.status === 404){
+        if (response.status === 404) {
             noUserFound();
-        } else{
+        } else {
             let data = await response.json();
             extractRepos(data);
         }
