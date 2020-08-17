@@ -1,4 +1,5 @@
 const mainContent = document.querySelector(".timeline");
+const errorArea = document.querySelector(".errorArea");
 let user = 'rebekkabb';
 let repositories = [];
 let isLeft = true;
@@ -21,11 +22,12 @@ function saveUsernameAndSearch() {
 
 function clearThePage() {
     mainContent.innerHTML = "";
+    errorArea.innerHTML = "";
     repositories = [];
 }
 
 function noUserFound() {
-    mainContent.innerHTML = "No such user found";
+    errorArea.innerHTML += "No such user found";
 }
 
 

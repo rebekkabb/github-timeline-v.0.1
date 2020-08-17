@@ -11,6 +11,44 @@ body {
 
 }
 
+
+#username-input {
+  border-color: transparent;
+  padding: 5px;
+  margin: 10px 10px;
+
+  &:active {
+    border-bottom: 2px solid $secondary-color;
+  }
+
+  &:focus {
+    border-bottom: 2px solid $secondary-color;
+  }
+}
+
+*:focus {
+  outline: none;
+}
+
+#input-button {
+  color: $secondary-color;
+  text-transform: uppercase;
+  background: white;
+  padding: 5px;
+  border: 2px solid $secondary-color;
+  border-radius: 6px;
+  display: inline-block;
+  transition: all 0.3s ease 0s;
+  font-family: $font-stack;
+
+  &:hover {
+    color: $secondary-color;
+    border-radius: 50px;
+    border-color: $secondary-color;
+    transition: all 0.3s ease 0s;
+  }
+}
+
 .content {
   width: 80%;
   margin: 5% auto;
