@@ -11,11 +11,19 @@
 </head>
 <body>
 <div class="content">
-    <label for="username-input"> Insert username </label>
-    <input type="text" id="username-input">
-    <button id="input-button" onclick="saveUsernameAndSearch()">Search</button>
-    <h1 class="mainText"> Public repos: </h1>
-    <div class="repositories"></div>
+    <div class="upper">
+        <h1> Github Timeline </h1>
+        <div class="input-section">
+            <input type="text" id="username-input" placeholder="Insert username">
+            <button id="input-button" onclick="saveUsernameAndSearch()">Search</button>
+        </div>
+    </div>
+
+    <div class="lower">
+        <div class="timeline"></div>
+    </div>
+
+
 </div>
 
 <script src="app.js"></script>

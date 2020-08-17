@@ -1,6 +1,7 @@
-const mainContent = document.querySelector(".repositories");
+const mainContent = document.querySelector(".timeline");
 let user = 'rebekkabb';
 let repositories = [];
+let isLeft = true;
 
 const usernameInput = document.querySelector("#username-input");
 
@@ -78,8 +79,21 @@ async function extractData(repository) {
 
 function displayHTML() {
     repositories.forEach(function func(item) {
-        console.log("print");
-        mainContent.innerHTML += `<br> <p> ${item.name} ${item.date} <a href=${item.link} target="_blank"> Link to Github </a> </p><hr>`;
+        if (isLeft) {
+            mainContent.innerHTML += `<div class="container left"> <div class="data"> 
+            <h1>${item.name}</h1></h1>
+            <p>${item.date}</p>
+            <a href=${item.link} target="_blank"> Link to Github </a>
+            </div></div>`
+            isLeft = false;
+        } else {
+            mainContent.innerHTML += `<div class="container right"> <div class="data"> 
+            <h1>${item.name}</h1></h1>
+            <p>${item.date}</p>
+            <a href=${item.link} target="_blank"> Link to Github </a>
+            </div></div>`
+            isLeft = true;
+        }
     })
 }
 
