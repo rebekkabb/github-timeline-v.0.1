@@ -6,26 +6,28 @@
     <title>Github Timeline Project</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;600&display=swap"
-          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="content">
-    <div class="upper">
-        <h1> Github Timeline </h1>
-        <div class="input-section">
-            <input type="text" id="username-input" placeholder="Insert username">
-            <button id="input-button" onclick="saveUsernameAndSearch()">Search</button>
-        </div>
-        <div class="errorArea"></div>
+<nav>
+    <a href="index.html"> Github Timeline </a>
+    <div class="input-section">
+        <input type="text" id="username-input" placeholder="Insert username">
+        <button id="input-button" onclick="saveUsernameAndSearch()">Search</button>
     </div>
+</nav>
+<main>
+    <div class="content">
+        <div class="errorArea"></div>
 
-    <div class="lower">
+        <div class="introText">
+            <h2> Want a timeline of all your public Github repositories? </h2>
+            <p> Insert your username (or your friends username) to see it </p>
+        </div>
+        <h1 class="headline"></h1>
         <div class="timeline"></div>
     </div>
-
-
-</div>
+</main>
 
 <script src="app.js"></script>
 </body>
