@@ -1,5 +1,5 @@
-$primary-color: #FCF6F5FF;
-$secondary-color: #333D79FF;
+$primary-color: #F6F7F8;
+$secondary-color: #123C69;
 $font-stack: 'Quicksand', sans-serif;
 
 * {
@@ -9,8 +9,8 @@ $font-stack: 'Quicksand', sans-serif;
 
 body {
   font-family: $font-stack;
-  background-color: $secondary-color;
-  color: $primary-color;
+  background-color: $primary-color;
+  color: $secondary-color;
   box-sizing: border-box;
   display: block;
 
@@ -18,7 +18,7 @@ body {
 
 nav {
   width: 100%;
-  min-height: 10vh;
+  min-height: 8vh;
   background-color: white;
   display: flex;
   justify-content: space-evenly;
@@ -89,12 +89,12 @@ nav {
 
 .main {
   min-height: 75vh;
-  min-width: 60vh;
+  max-width: 50vh;
 
 }
 
 .content {
-  margin-top: 5vh;
+  margin-top: 5%;
 }
 
 .headline {
@@ -108,13 +108,13 @@ nav {
 .timeline {
   position: relative;
   max-width: 1000px;
-  margin: 50px auto;
+  margin: 5% auto;
 
   &::after {
     content: '';
     position: absolute;
     width: 4px;
-    background-color: $primary-color;
+    background-color: $secondary-color;
     top: 0;
     bottom: 0;
     left: 50%;
@@ -135,8 +135,8 @@ nav {
     width: 15px;
     height: 15px;
     right: -12px;
-    background-color: $primary-color;
-    border: 4px solid $secondary-color;
+    background-color: $secondary-color;
+    border: 4px solid $primary-color;
     top: 20px;
     border-radius: 50%;
     z-index: 1;
@@ -151,6 +151,7 @@ nav {
 .left {
   left: -181px;
   animation: slide-right 0.5s forwards;
+
   &::before {
     content: " ";
     height: 0;
@@ -165,8 +166,10 @@ nav {
   }
 }
 
-@keyframes slide-right{
-  100% { left: -81px }
+@keyframes slide-right {
+  100% {
+    left: -81px
+  }
 }
 
 .right {
@@ -191,8 +194,10 @@ nav {
   }
 }
 
-@keyframes slide-left{
-  100% { left: 50% }
+@keyframes slide-left {
+  100% {
+    left: 50%
+  }
 }
 
 .data {
@@ -235,7 +240,7 @@ nav {
 }
 
 .introText {
-  margin-top: 30vh;
+  margin-top: 20%;
   text-align: center;
 
   h2 {
