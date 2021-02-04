@@ -44,7 +44,7 @@ function noUserFound() {
 
 async function getAllData() {
     try {
-        let response = await fetch('http://api.github.com/users/' + user + '/repos');
+        let response = await fetch('https://api.github.com/users/' + user + '/repos');
         if (response.status === 404) {
             noUserFound();
         } else {
@@ -141,7 +141,7 @@ function getLink(repository) {
 
 async function getLanguages(repository) {
     try {
-        let languages = await fetch('http://api.github.com/repos/' + user + '/' + repository.name + '/languages');
+        let languages = await fetch('https://api.github.com/repos/' + user + '/' + repository.name + '/languages');
         let data = await languages.json();
         return Object.keys(data);
     } catch (err) {
